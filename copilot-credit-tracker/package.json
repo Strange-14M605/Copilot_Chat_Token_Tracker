@@ -1,0 +1,87 @@
+{
+  "name": "copilot-credit-tracker",
+  "displayName": "copilot-credit-tracker",
+  "description": "Local Copilot AI credit telemetry receiver",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.138.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:copilot-credit-tracker.usageView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "copilot-credit-tracker",
+          "title": "Copilot Credit Tracker",
+          "icon": "$(graph-line)"
+        }
+      ]
+    },
+    "views": {
+      "copilot-credit-tracker": [
+        {
+          "id": "copilot-credit-tracker.usageView",
+          "name": "Copilot Usage",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "copilot-credit-tracker.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "copilot-credit-tracker.openUsage",
+        "title": "Copilot Credit Tracker: Open Usage"
+      }
+    ],
+    "configuration": {
+      "title": "Copilot Credit Tracker",
+      "properties": {
+        "copilot-credit-tracker.backendUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8000",
+          "description": "Base URL for the Copilot usage API."
+        },
+        "copilot-credit-tracker.otelPort": {
+          "type": "number",
+          "default": 4318,
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "Local port that receives Copilot Chat OTLP traces."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "@types/vscode": "^1.138.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0",
+    "@vscode/vsce": "^4.0.0",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  }
+}

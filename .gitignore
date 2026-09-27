@@ -1,0 +1,19 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node and VS Code extension builds
+node_modules/
+out/
+dist/
+.vscode-test/
+*.vsix
+
+# Local environment and OS files
+.env
+.env.*
+!.env.example
+.DS_Store
